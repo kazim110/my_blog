@@ -2,6 +2,8 @@ source 'https://rubygems.org'
 
 ruby '3.2.2'
 
+gem 'rails-controller-testing'
+
 gem 'rspec-rails'
 
 gem 'rubocop', '>= 1.0', '< 2.0'
