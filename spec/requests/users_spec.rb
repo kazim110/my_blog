@@ -11,9 +11,14 @@ RSpec.describe 'users', type: :request do
     end
   end
 
-  describe "GET /users/:id" do
-    it "renders the show template" do
-      user = User.create(name: 'John Doe', photo: 'home/document/pic.jpeg', bio: 'teacher', posts_counter: 3) # Adjust attributes as needed
+  describe 'GET /users/:id' do
+    it 'renders the show template' do
+      user = User.create(
+        name: 'John Doe',
+        photo: 'home/document/pic.jpeg',
+        bio: 'teacher',
+        posts_counter: 3
+      )
 
       get user_path(user)
       expect(response).to have_http_status(200)
