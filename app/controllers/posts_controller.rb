@@ -6,9 +6,6 @@ class PostsController < ApplicationController
   def show
     @post = Post.find_by(id: params[:id])
 
-    if @post.nil?
-      head :not_found
-      return
-    end
+    return unless @post.nil?
   end
 end
