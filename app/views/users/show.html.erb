@@ -1,3 +1,36 @@
-<h1>
-Here is a recent posts for a given user
-</h1>
+<div class='main d-flex flex-column justify-content-center'>
+  <div class="card m-3">
+    <div class="row g-0 p-1">
+      <div class="col-md-4">
+        <img src=<%= @user.photo -%> class="img-fluid w-50" style='height:200px;' alt="...">
+      </div>
+      <div class="col-md-8">
+        <div class="card-body">
+          <h5 class="card-title fs-1 m-5"><%= @user.name -%></h5>
+          <p class="card-text d-flex justify-content-end"><small class="text-body-secondary">Number of Posts: <%= @user.posts.count -%></small></p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="card m-3">
+    <div class="card-body">
+      <h6>Bio</6h>
+      <p><%= @user.bio -%></p>
+    </div>
+  </div>
+
+  <div class='user-posts'>
+  
+    <%- @user.recent_posts.each do |post| -%>
+      <%= link_to "/users/#{@user.id}/posts/#{post.id}", class: 'user-nav-link' do %>
+        <div class="card m-3">
+        <div class="card-body">
+          <h5 class="card-title">Post#<%= post.id -%></h5>
+          <p class="card-text"><%= post.text -%></p>
+          <p class="card-text d-flex justify-content-end"><small class="text-body-secondary">Comments: <%= post.comments.size -%></small>, <small class="text-body-secondary">Likes: <%= post.likes.size -%></small></p>
+        </div>
+        </div>
+      <%-end-%>
+    <%end%>
+    <%= link_to "See All Posts", "/users/#{@user.id}/posts", class:"btn btn-primary" %>
+</div>
