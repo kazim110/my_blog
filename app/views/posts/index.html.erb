@@ -1,3 +1,37 @@
-<h1>
-Here is a list of posts for a given user
-</h1>
+<div class='main d-flex flex-column'>
+  <div class="card m-3">
+    <div class="row g-0 p-1">
+      <div class="col-md-4">
+        <img src=<%= @user.photo -%> class="img-fluid w-50" style='height:200px;' alt="...">
+      </div>
+      <div class="col-md-8">
+        <div class="card-body">
+          <h5 class="card-title"><%= @user.name -%></h5>
+          <p class="card-text"><small class="text-body-secondary">Number of Posts: <%= @user.posts.size -%></small></p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <%- @user.posts.each do |post| -%>
+    <div class="card m-3">
+    <%= link_to "/users/#{@user.id}/posts/#{post.id}", class: 'user-nav-link' do %>
+      <div class="card-body">
+        <h5 class="card-title">Post#<%= post.id -%></h5>
+        <p class="card-text"><%= post.text -%></p>
+      </div>
+    <%-end-%>
+
+    <div class='card-footer'>
+    <% post.recent_comments.each do |comment| %>
+        <p><strong><%= comment.user.name %>:</strong>
+        <%= comment.text %></p>
+    <% end %>
+    <p class="card-text d-flex justify-content-end"><small class="text-body-secondary">Comments: <%= post.comments.size -%></small>, <small class="text-body-secondary">Likes: <%= post.likes.size -%></small></p>
+    <div class="new_like">
+      <%= button_to "Like", user_post_likes_path(@user, post), method: :post, remote: true %>
+    </div>
+    </div>
+  </div>
+  <%-end-%>
+</div>

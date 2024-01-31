@@ -1,3 +1,19 @@
-<h1>
-Here is a list of user
-</h1>
+<div class='main d-flex flex-column'>
+  <%- @users.each do |user| -%>
+    <%= link_to "/users/#{user.id}", class: 'user-nav-link' do %>
+      <div  class="card m-3">
+        <div class="row g-0 p-1">
+          <div class="col-md-4">
+            <img src=<%= user.photo -%> class="img-fluid w-50" style='height:200px;' alt="...">
+          </div>
+          <div class="col-md-8">
+            <div class="card-body">
+              <h5 class="card-title fs-1 m-5"><%= user.name -%></h5>
+              <p class="card-text d-flex justify-content-end"><small class="text-body-secondary">Number of Posts: <%= user.posts.size -%></small></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    <%-end-%>
+  <%-end-%>
+</div>

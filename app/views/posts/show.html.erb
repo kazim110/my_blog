@@ -1,3 +1,19 @@
-<h1>
-Here is a posts for a given user
-</h1>
+
+<div class='card m-2'>
+<div class="card-body">
+<div class='d-flex flex-row justify-content-between'>
+  <h5 class="card-title"><%= @post.title -%> by <%= @post.author.name%></h5>
+  <p class="card-text d-flex justify-content-end"><small class="text-body-secondary">Comments: <%= @post.comments.size -%></small>, <small class="text-body-secondary">Likes: <%= @post.likes.size -%></small></p>
+</div>
+<p class="card-text"><%= @post.text -%></p>
+</div>
+<div class='card-footer'>
+<% @post.comments.each do |comment| %>
+  <p><strong><%= comment.user.name %>:</strong>
+  <%= comment.text %></p>
+<% end%>
+<div class="new_comment">
+    <%= link_to 'New Comment', new_user_post_comment_path(@user, @post) %>
+  </div>
+</div>
+</div>
