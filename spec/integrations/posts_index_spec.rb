@@ -1,7 +1,6 @@
 require 'rails_helper'
 RSpec.feature 'User Post Index Page', type: :feature do
   before(:each) do
-
     @user = User.create(name: 'Test User', photo: 'test_photo.jpg')
     @user.save(validate: false)
     @post1 = @user.posts.create(text: 'Post Text 1')
@@ -34,7 +33,6 @@ RSpec.feature 'User Post Index Page', type: :feature do
   end
 
   scenario 'redirects to post show page on clicking a post' do
-
     click_link('Post Text 1')
     expect(page).to have_current_path("/users/#{@user.id}/posts/#{@post1.id}")
   end
