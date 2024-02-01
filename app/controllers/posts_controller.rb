@@ -1,6 +1,6 @@
 class PostsController < ApplicationController
   layout 'application'
-  
+
   def index
     @posts = Post.all
     @user = User.find_by(id: params[:user_id])
@@ -24,9 +24,7 @@ class PostsController < ApplicationController
 
     respond_to do |format|
       if @post.save
-        format.html {
-          redirect_to user_posts_path(@user), notice: 'Post was successfully created.'
-        }
+        format.html { redirect_to user_posts_path(@user), notice: 'Post was successfully created.' }
       else
         flash.now[:error] = 'Failed to create post.'
         Rails.logger.debug @post.errors.inspect
