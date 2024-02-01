@@ -20,7 +20,10 @@
   </div>
 
   <div class='user-posts'>
-  
+  <% if @recent_posts.empty? %>
+    <p>No recent posts available.</p>
+    <%= link_to 'Create New Post', new_user_post_path(@user) %>
+    <%else%>
     <%- @user.recent_posts.each do |post| -%>
       <%= link_to "/users/#{@user.id}/posts/#{post.id}", class: 'user-nav-link' do %>
         <div class="card m-3">
@@ -33,4 +36,5 @@
       <%-end-%>
     <%end%>
     <%= link_to "See All Posts", "/users/#{@user.id}/posts", class:"btn btn-primary" %>
+    <%end%>
 </div>
