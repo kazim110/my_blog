@@ -15,35 +15,35 @@ RSpec.feature 'User Show Page' do
     visit user_path(@user)
   end
 
-  scenario 'displays user information' do
-    # Check if user's profile picture, username, and number of posts are displayed
+  scenario 'displays user information to have style' do
     expect(page).to have_css("img[src*='user_photo_url']")
+  end
+
+  scenario 'displays user information' do
     expect(page).to have_content('Test User')
-    expect(page).to have_content('Number of Posts: 3') # Assuming it displays only 3 recent posts
+    expect(page).to have_content('Number of Posts: 3') 
   end
 
   scenario 'displays user bio' do
-    # Check if user's bio is displayed
     expect(page).to have_content('Test bio')
   end
 
   scenario 'displays user\'s first 3 posts' do
-    # Check if the first 3 posts are displayed
     expect(page).to have_content('Post 1')
     expect(page).to have_content('Post 2')
     expect(page).to have_content('Post 3')
   end
 
   scenario 'allows viewing all user posts' do
-    # Click the button to view all posts
     click_link('See All Posts')
     expect(page).to have_current_path(user_posts_path(@user))
   end
 
   scenario 'redirects to post show page on clicking a post' do
-    # Click on the first post
     click_link('Post 1')
     expect(page).to have_current_path("/users/#{@user.id}/posts/#{@post1.id}")
   end
+
+  
 end
 # rubocop:enable Metrics/BlockLength
