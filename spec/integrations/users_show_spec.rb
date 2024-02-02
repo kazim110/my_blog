@@ -34,7 +34,7 @@ RSpec.feature 'User Show Page' do
     expect(page).to have_content('Post 3')
   end
 
-  scenario 'allows viewing all user posts' do
+  scenario 'Redirects to allows viewing all user posts' do
     click_link('See All Posts')
     expect(page).to have_current_path(user_posts_path(@user))
   end
