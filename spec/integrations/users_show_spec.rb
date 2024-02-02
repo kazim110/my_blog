@@ -21,7 +21,7 @@ RSpec.feature 'User Show Page' do
 
   scenario 'displays user information' do
     expect(page).to have_content('Test User')
-    expect(page).to have_content('Number of Posts: 3') 
+    expect(page).to have_content('Number of Posts: 3')
   end
 
   scenario 'displays user bio' do
@@ -43,7 +43,5 @@ RSpec.feature 'User Show Page' do
     click_link('Post 1')
     expect(page).to have_current_path("/users/#{@user.id}/posts/#{@post1.id}")
   end
-
-  
 end
 # rubocop:enable Metrics/BlockLength
