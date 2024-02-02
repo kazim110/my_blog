@@ -1,4 +1,6 @@
 require 'rails_helper'
+
+# rubocop:disable Metrics/BlockLength
 RSpec.feature 'User Post Index Page', type: :feature do
   before(:each) do
     # Create a user and associated posts with comments and likes for testing
@@ -50,3 +52,4 @@ RSpec.feature 'User Post Index Page', type: :feature do
     expect(page).to have_current_path("/users/#{@user.id}/posts/#{@post1.id}")
   end
 end
+# rubocop:enable Metrics/BlockLength
