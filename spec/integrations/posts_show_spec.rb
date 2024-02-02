@@ -20,30 +20,41 @@ RSpec.feature 'Post details display', type: :feature do
 
     visit user_post_path(user_id: @user.id, id: @post.id)
   end
-  scenario 'Display post details and comments' do
-    # Check if post details are displayed
+
+  scenario 'Display post title' do
     expect(page).to have_content(@post.title)
+  end
+
+  scenario 'Display post author' do
     expect(page).to have_content(@user.name)
-    expect(page).to have_content('Comments: 2') # Assuming 2 comments were created in the before block
+  end
+
+  scenario 'Display post content' do
     expect(page).to have_content('This is the content of the post')
-    # Check if comments are displayed
+  end
+
+  scenario 'Display comments count' do
+    expect(page).to have_content('Comments: 2')
+  end
+
+  scenario 'Display comments content' do
     expect(page).to have_content('Comment 1 text')
     expect(page).to have_content('Comment 2 text')
-    # Check if 'New Comment' link is present
+  end
+
+  scenario 'Redirects to add comments page on clicking a New comment' do
     expect(page).to have_link('New Comment', href: new_user_post_comment_path(@user, @post))
   end
 
   scenario 'displays the number of likes for the post' do
-    expect(page).to have_content('Likes: 2') # Assuming there are no likes initially
+    expect(page).to have_content('Likes: 2')
   end
 
   scenario 'displays usernames of commenters' do
-    # Check if usernames of commenters are displayed
     expect(page).to have_content('User 1')
   end
 
   scenario 'displays comments left by each commenter' do
-    # Check if comments left by each commenter are displayed
     expect(page).to have_content('Comment 1 text')
     expect(page).to have_content('Comment 2 text')
   end
