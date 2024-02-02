@@ -22,6 +22,10 @@ RSpec.feature 'User Post Index Page', type: :feature do
     @like2 = @post2.likes.create(user: @user)
     visit user_posts_path(@user)
   end
+  
+  it 'displays paginated posts' do
+    expect(page).to have_selector('.pagination', count: 1)
+  end
 
   scenario 'Disply user name' do
     expect(page).to have_content(@user.name)
