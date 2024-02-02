@@ -21,6 +21,9 @@ RSpec.feature 'User Show Page' do
 
   scenario 'displays user information' do
     expect(page).to have_content('Test User')
+  end
+
+  scenario 'Display user posts count' do
     expect(page).to have_content('Number of Posts: 3')
   end
 
