@@ -36,6 +36,18 @@ RSpec.feature 'User Post Index Page', type: :feature do
     expect(page).to have_content('Post Text 2')
   end
 
+  scenario 'Display user posts count' do
+    expect(page).to have_content('Number of Posts: 2')
+  end
+
+  scenario 'Display user comments count' do
+    expect(page).to have_content('Comments: 2', count: 1)
+  end
+
+  scenario 'Display user likes count' do
+    expect(page).to have_content('Likes: 1', count: 2)
+  end
+
   scenario 'Display user posts comments' do
     expect(page).to have_content(@comment1.text)
     expect(page).to have_content('Comment 2')
