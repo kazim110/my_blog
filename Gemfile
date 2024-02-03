@@ -4,6 +4,8 @@ ruby '3.2.2'
 
 gem 'rails-controller-testing'
 
+gem 'devise'
+
 gem 'rspec-rails'
 
 gem 'will_paginate'

@@ -1,6 +1,8 @@
 class PostsController < ApplicationController
   layout 'application'
 
+  before_action :authenticate_user!
+
   def index
     @posts = Post.includes(:comments, :likes, commands: [:user]).paginate(page: params[:page], per_page: 1)
     @user = User.find_by(id: params[:user_id])
