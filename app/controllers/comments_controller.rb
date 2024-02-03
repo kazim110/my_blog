@@ -1,14 +1,16 @@
 class CommentsController < ApplicationController
   layout 'application'
 
+  before_action :authenticate_user!
+
   def new
-    @user = current_user
+    @user = User.includes(:posts).find(params[:user_id])
     @post = Post.find(params[:post_id])
     @comment = Comment.new(post: @post)
   end
 
   def create
-    @user = current_user
+    @user = User.includes(:posts).find(params[:user_id])
     @post = @user.posts.find(params[:post_id])
     @comment = @post.comments.new(comment_params.merge(user: @user))
 
