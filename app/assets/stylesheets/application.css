@@ -51,15 +51,14 @@
   pointer-events: none;
 }
 
-.new_user {
-  max-width: 400px;
+new_user {
+  max-width: 420px;
   margin: auto;
   padding: 20px;
   border: 1px solid #ccc;
   border-radius: 5px;
 }
 
-/* Form field styles */
 .new_user .field {
   margin-bottom: 15px;
 }
@@ -74,12 +73,11 @@
 .new_user input[type="email"],
 .new_user input[type="password"] {
   width: 100%;
-  padding: 8px;
-  border-radius: 3px;
+  padding: 10px;
+  border-radius: 4px;
   border: 1px solid #ccc;
 }
 
-/* Submit button styles */
 .new_user .actions {
   margin-top: 15px;
 }
@@ -89,6 +87,6 @@
   color: white;
   padding: 10px 20px;
   border: none;
-  border-radius: 3px;
+  border-radius: 4px;
   cursor: pointer;
 }
